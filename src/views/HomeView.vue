@@ -1,5 +1,22 @@
-<script setup lang='ts'>
+<script lang='ts'>
+import LoginForm from '@/components/LoginForm.vue';
+import { defineComponent } from 'vue';
 
+export default defineComponent({
+  components: {
+    LoginForm,
+  },
+  data() {
+    return {
+      loginFormVisible: false,
+    };
+  },
+  methods: {
+    updateShow() {
+      this.loginFormVisible = true;
+    },
+  },
+});
 </script>
 
 <template>
@@ -13,11 +30,10 @@
           <a href='/register'>Регистрация</a>
         </div>
         <div class='home__header-login'>
-          <a href='/login'>
-            <bottom class='home__bottom-login'>
-              Вход
-            </bottom>
-          </a>
+          <button type='button' class='home__button-login' @click='updateShow'>
+            Вход
+          </button>
+          <LoginForm v-model:show=loginFormVisible />
         </div>
       </div>
     </div>
@@ -79,16 +95,23 @@
   align-items: center;
 }
 
-.home__bottom-login {
-  display: block;
+.home__button-login {
   border-radius: 20px;
+  border: #FE746A 2px solid;
   background: #FFFEFE;
   text-align: center;
   height: 100%;
+  width: 100%;
   color: #FE746A;
   font-family: 'Numans', sans-serif;
   font-size: 20px;
   font-weight: 400;
+  cursor: pointer;
+}
+
+.home__button-login:hover {
+  background: #FE746A;
+  color: #FFFEFE;
 }
 
 .home a {
