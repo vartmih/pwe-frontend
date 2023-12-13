@@ -1,19 +1,25 @@
 <script lang='ts'>
 import LoginForm from '@/components/LoginForm.vue';
+import RegisterForm from '@/components/RegisterForm.vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   components: {
     LoginForm,
+    RegisterForm,
   },
   data() {
     return {
       loginFormVisible: false,
+      registerFormVisible: false,
     };
   },
   methods: {
-    updateShow() {
+    updateShowLoginForm() {
       this.loginFormVisible = true;
+    },
+    updateShowRegisterForm() {
+      this.registerFormVisible = true;
     },
   },
 });
@@ -27,10 +33,13 @@ export default defineComponent({
       </div>
       <div class='home__header-buttons'>
         <div class='home__header-register'>
-          <a href='/register'>Регистрация</a>
+          <button type='button' class='home__button-register' @click='updateShowRegisterForm'>
+            Регистрация
+          </button>
+          <RegisterForm v-model:show=registerFormVisible />
         </div>
         <div class='home__header-login'>
-          <button type='button' class='home__button-login' @click='updateShow'>
+          <button type='button' class='home__button-login' @click='updateShowLoginForm'>
             Вход
           </button>
           <LoginForm v-model:show=loginFormVisible />
@@ -112,6 +121,18 @@ export default defineComponent({
 .home__button-login:hover {
   background: #FE746A;
   color: #FFFEFE;
+}
+
+.home__button-register {
+  border: 0;
+  background: transparent;
+  font-family: 'Numans', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.home__button-register:hover {
+  text-decoration: underline;
 }
 
 .home a {

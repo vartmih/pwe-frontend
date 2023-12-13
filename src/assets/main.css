@@ -4,3 +4,7 @@ body {
     padding: 0;
     background: rgba(86, 127, 240, 0.22);
 }
+
+input::placeholder {
+    color: #7e7e7e;
+}

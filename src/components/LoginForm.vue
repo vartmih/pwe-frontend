@@ -32,7 +32,7 @@ export default defineComponent({
     },
     authorization() {
       axios.post(
-        `${process.env.VUE_APP_API_URL}users/login`,
+        `${process.env.VUE_APP_API_URL}/users/login`,
         { username: this.email, password: this.password },
         {
           headers: {
